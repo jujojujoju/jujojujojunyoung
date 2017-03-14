@@ -31,13 +31,20 @@
     <div id="hp_form_title">휴대폰 번호 입력</div>
 
     <div id="hp_inputs">
-        <select class="form-control" id="hp_input_1">
-            <option>010</option>
-            <option>011</option>
-            <option>017</option>
-        </select>
-        <input type="text" class="form-control" id="hp_input_2">
-        <input type="text" class="form-control" id="hp_input_3">
+        <form action="/" method="post">
+            <select class="form-control" id="hp_input_1" name="hp_input_1">
+                <option>010</option>
+                <option>011</option>
+                <option>017</option>
+            </select>
+            <input type="text" class="form-control" id="hp_input_2" name="hp_input_2">
+            <input type="text" class="form-control" id="hp_input_3" name="hp_input_3">
+
+            <div id="hp_submit_btn_wrapper">
+                <button type="submit" class="btn btn-default" id="hp_submit_btn">확인</button>
+            </div>
+
+        </form>
     </div>
 </div>
 

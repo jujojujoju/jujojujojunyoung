@@ -11,11 +11,21 @@
 }
 
 #hp_inputs {
-
+    margin-top: 20px;
 }
 
 #hp_input_1, #hp_input_2, #hp_input_3 {
     display:inline-block;
     width : 30%;
     margin: auto 1px;
+}
+
+#hp_submit_btn_wrapper {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+}
+
+#hp_submit_btn {
+    width: 100%;
 }
