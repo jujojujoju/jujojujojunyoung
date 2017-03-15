@@ -64,9 +64,20 @@ app.post('/', function (req, res) {
 
 });
 
+app.get('/table', function(req, res){    
+  connection.query('SELECT * from hps', function(err, rows) {
+    if(err) throw err;
+
+    console.log('The solution is: ', rows);
+    res.send(rows);
+  });
+});
+
+
 app.get('/table', function (req, res) {
     res.sendFile(__dirname + '/html/table.html');
 });
+
 
 app.listen(3000, function () {
 });
