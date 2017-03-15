@@ -113,14 +113,12 @@ app.post('/', function (req, res) {
 
 });
 
-
 app.get('/table', function (req, res) {
     connection.query('SELECT * from hps', function (err, rows) {
         if (err) throw err;
         // TODO 예외처리
 
         var data = rows;
-
         res.render('pages/table', {
             data: data
         });

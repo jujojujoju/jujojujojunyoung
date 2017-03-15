@@ -9,7 +9,29 @@
     $(document).ready(function () {
 
         var data = JSON.parse('<%- JSON.stringify(data) %>');
-        console.log(data);
+        var dateArray = [];
+        for (var i in data) {
+            var datastring = data[i].hp_regtime;
+
+            dateArray.push(datastring.slice(0, 4));
+            dateArray.push(datastring.slice(4, 6));
+            dateArray.push(datastring.slice(6, 8));
+            dateArray.push(datastring.slice(8, 10));
+            dateArray.push(datastring.slice(10, 12));
+            dateArray.push(datastring.slice(12, 14));
+
+            data[i].hp_regtime = ''
+            data[i].hp_regtime =
+                dateArray[0] + '-' +
+                dateArray[1] + '-' +
+                dateArray[2] + '  ' +
+                dateArray[3] + ':' +
+                dateArray[4] + ':' +
+                dateArray[5];
+
+            dateArray = [];
+        }
+
 
         $(function () {
             $('#table').bootstrapTable({
@@ -18,7 +40,6 @@
             });
 
         });
-
     });
 
 </script>
