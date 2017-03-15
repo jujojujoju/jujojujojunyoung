@@ -5,6 +5,7 @@ var app = express();
 app.use(express.static(__dirname + '/html'));
 app.use(express.static(__dirname + '/css'));
 app.use(express.static(__dirname + '/js'));
+app.use(express.static(__dirname + '/images'));
 
 app.use(bodyParser.urlencoded({extend: false}));
 app.use(bodyParser.json());
