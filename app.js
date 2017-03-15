@@ -27,13 +27,15 @@ app.post('/', function (req, res) {
 
     var hp = req.body.hp_input_1 + '-' + req.body.hp_input_2 + '-' + req.body.hp_input_3;
 
-    //TODO : 중복된 전화번호 거르기
+    connection.query('SELECT * FROM hps WHERE hp = \'' + hp + '\'', function (err, rows, fields) {
 
-    connection.query('SELECT * FROM hps WHERE hp = ' + hp, function (err, rows, fields) {
         if (err) {
+            console.log('ERROR :: database select query error');
             console.log(err);
+            res.redirect('/?fail');
         } else if (rows.length != 0) {
-            res.send('<script type="text/javascript">alert("휴대폰 번호 중복.");</script>');
+            console.log('FAIL :: hp (' + hp + ' ) is duplicated');
+            res.redirect('/?duplication');
         } else {
             // 등록시간
             var date = new Date();
@@ -44,17 +46,13 @@ app.post('/', function (req, res) {
                 function (err, rows, fields) {
                     // 실패시
                     if (err) {
-                        // TODO 실패 알림 / index 페이지 리다이렉트
+                        console.log('ERROR :: database insert query error');
                         console.log(err);
-                        res.send('<script type="text/javascript">alert("데이터베이스 추가 중 에러가 발생했습니다.");</script>');
-                        // res.sendFile();
+                        res.redirect('/?fail');
                     }
 
-
-                    // TODO 성공시 성공 알림 / index 페이지 리다이렉트
-                    res.send('<script type="text/javascript">alert("성공적으로 응모 완료.");</script>');
-
-                    // res.sendFile('html/index.html', {root: __dirname});
+                    console.log('SUCCESS :: hp (' + hp + ' ) insert success');
+                    res.redirect('/?success');
                 });
         }
 
