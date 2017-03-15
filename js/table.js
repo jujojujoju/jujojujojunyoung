@@ -1,56 +1,70 @@
-$(document).ready(function () {
+<html>
 
-var data = [{
-    "name": "bootstrap-table",
-        "stargazers_count": "10",
-        "forks_count": "122",
-        "description": "An extended Bootstrap table"
-}, {
-    "name": "multiple-select",
-        "stargazers_count": "288",
-        "forks_count": "20",
-        "description": "A jQuery plugin to select multiple elements with checkboxes :)"
-}, {
-    "name": "bootstrap-table",
-        "stargazers_count": "32",
-        "forks_count": "11",
-        "description": "Show/hide password plugin for twitter bootstrap."
-}, {
-    "name": "bootstrap-table",
-        "stargazers_count": "1",
-        "forks_count": "4",
-        "description": "my blog"
-}, {
-    "name": "scutech-redmine 1",
-        "stargazers_count": "50",
-        "forks_count": "3",
-        "description": "Redmine notification tools for chrome extension."
-}];
+<head>
+    <title>게시판</title>
 
-$(function () {
-    $('#table').bootstrapTable({
-        data: data
-    });
 
-    $(".mybtn-top").click(function () {
-        $('#table').bootstrapTable('scrollTo', 0);
-    });
-    
-    $(".mybtn-row").click(function () {
-        var index = +$('.row-index').val(),
-            top = 0;
-        $('#table').find('tbody tr').each(function (i) {
-        	if (i < index) {
-            	top += $(this).height();
-            }
-        });
-        $('#table').bootstrapTable('scrollTo', top);
-    });
-    
-    $(".mybtn-btm").click(function () {
-        $('#table').bootstrapTable('scrollTo', 'bottom');
-    });
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-});
-    
-});
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+
+    <!--bootstrap-table-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
+
+    <!-- index CSS file import -->
+    <link rel="stylesheet" type="text/css" href="global.css">
+    <link rel="stylesheet" type="text/css" href="table.css">
+
+    <!-- javscript import -->
+    <script src="table.js"></script>
+
+
+</head>
+
+<body>
+
+<div class="form-inline">
+    <button type="button"
+            class="btn btn-default mybtn-top">
+        Scroll to top
+    </button>
+    <button type="button"
+            class="btn btn-default mybtn-row">
+        Scroll to row index:
+    </button>
+    <input type="number"
+           class="form-control row-index"
+           value="3" min="0">
+    <button type="button"
+            class="btn btn-default mybtn-btm">
+        Scroll to bottom
+    </button>
+</div>
+
+<div style="padding: 10px; ">
+    <br>
+    <table id="table" data-search="true" data-show-columns="true" data-pagination="true" data-height="250">
+        <thead>
+        <tr>
+            <th data-field="stargazers_count" data-sortable="true">Stars</th>
+            <th data-field="name" data-sortable="true" width="200">Name</th>
+            <th data-field="forks_count" data-sortable="true">Forks</th>
+            <th data-field="description" data-sortable="true">Description</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+
+</body>
+
+</html>
