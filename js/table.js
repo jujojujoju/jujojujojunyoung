@@ -1,35 +1,47 @@
 $(document).ready(function () {
 
     var data = [{
-        "name": "bootstrap-table",
-        "stargazers_count": "10",
-        "forks_count": "122",
-        "description": "An extended Bootstrap table"
+        "id": "1",
+        "hp": "010-7758-1837",
+        "regtime": "2017101212"
     }, {
-        "name": "multiple-select",
-        "stargazers_count": "288",
-        "forks_count": "20",
-        "description": "A jQuery plugin to select multiple elements with checkboxes :)"
+        "id": "2",
+        "hp": "010-7758-1837",
+        "regtime": "2017101212"
     }, {
-        "name": "bootstrap-table",
-        "stargazers_count": "32",
-        "forks_count": "11",
-        "description": "Show/hide password plugin for twitter bootstrap."
+        "id": "3",
+        "hp": "010-7758-1837",
+        "regtime": "2017101212"
     }, {
-        "name": "bootstrap-table",
-        "stargazers_count": "1",
-        "forks_count": "4",
-        "description": "my blog"
+        "id": "4",
+        "hp": "010-7758-1837",
+        "regtime": "2017101212"
     }, {
-        "name": "scutech-redmine 1",
-        "stargazers_count": "50",
-        "forks_count": "3",
-        "description": "Redmine notification tools for chrome extension."
+        "id": "5",
+        "hp": "010-7758-1837",
+        "regtime": "2017101212"
+    }, {
+        "id": "6",
+        "hp": "010-7758-1837",
+        "regtime": "2017101212"
+    }, {
+        "id": "7",
+        "hp": "010-7758-1837",
+        "regtime": "2017101212"
+    }, {
+        "id": "8",
+        "hp": "010-7758-1837",
+        "regtime": "2017101212"
+    },{
+        "id": "9",
+        "hp": "010-7758-1837",
+        "regtime": "2017101212"
     }];
 
     $(function () {
         $('#table').bootstrapTable({
-            data: data
+            data: data,
+            pagination: true
         });
 
         $(".mybtn-top").click(function () {

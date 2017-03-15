@@ -33,33 +33,20 @@
 
 <body>
 
-<div class="form-inline">
-    <button type="button"
-            class="btn btn-default mybtn-top">
-        Scroll to top
-    </button>
-    <button type="button"
-            class="btn btn-default mybtn-row">
-        Scroll to row index:
-    </button>
-    <input type="number"
-           class="form-control row-index"
-           value="3" min="0">
-    <button type="button"
-            class="btn btn-default mybtn-btm">
-        Scroll to bottom
-    </button>
-</div>
-
 <div style="padding: 10px; ">
     <br>
-    <table id="table" data-search="true" data-show-columns="true" data-pagination="true" data-height="250">
+    <table id="table"
+           data-height="300"
+           data-page-size="3"
+           data-pagination-first-text="First"
+           data-pagination-pre-text="Previous"
+           data-pagination-next-text="Next"
+           data-pagination-last-text="Last">
         <thead>
         <tr>
-            <th data-field="stargazers_count" data-sortable="true">Stars</th>
-            <th data-field="name" data-sortable="true" width="200">Name</th>
-            <th data-field="forks_count" data-sortable="true">Forks</th>
-            <th data-field="description" data-sortable="true">Description</th>
+            <th data-field="id" data-sortable="true">인덱스</th>
+            <th data-field="hp" data-sortable="true">핸드폰 번호</th>
+            <th data-field="regtime" data-sortable="true">등록 일자</th>
         </tr>
         </thead>
     </table>
