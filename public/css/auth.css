@@ -4,16 +4,9 @@
     margin-top: -200px;
     left: 50%;
     margin-left: -125px;
-    height: 300px;
+    height: 200px;
     width: 250px;
     border-radius:10px;
-    background-color: grey;
-}
-
-#auth_title {
-    margin-top: 160px;
-    font-size: 140%;
-    color: white;
 }
 
 #auth_password {

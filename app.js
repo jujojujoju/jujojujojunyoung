@@ -1,16 +1,23 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var crypto = require('crypto');
+var jwt = require('jsonwebtoken');
+var config = require('./config/secret');
+
 var app = express();
+var routes = express.Router();
 
 app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.urlencoded({extend: false}));
 app.use(bodyParser.json());
+app.use('/table', routes);
 
 app.set('view engine', 'ejs');
+app.set('secret', config.secret);
 
 var mysql = require('mysql');
-var databaseConfig = require('./config/database.json');
+var databaseConfig = require('./config/secret.js');
 var connection = mysql.createConnection({
     host: databaseConfig.db_host,
     user: databaseConfig.db_user,
@@ -18,9 +25,52 @@ var connection = mysql.createConnection({
     database: databaseConfig.db_name
 });
 
+
 app.get('/auth', function (req, res) {
     res.render('pages/auth');
 });
+
+// 토큰 인증 미들웨어
+routes.use(function (req, res, next) {
+    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+    if (token) {
+        jwt.verify(token, app.get('secret'), function (err, decoded) {
+            if (err) {
+                res.redirect('/auth?login-please');
+            } else {
+                // if everything is good, save to request for use in other routes
+                req.decoded = decoded;
+                next();
+            }
+        });
+    } else {
+        res.redirect('/auth?login-please');
+    }
+});
+
+app.post('/auth', function (req, res) {
+    console.log(req.body);
+    //TODO 암호화
+
+    connection.query('SELECT * from auth', function (err, rows) {
+        if (err) throw err;
+        // TODO 예외처리
+
+        // 패스워드 확인
+        if (rows[0].password == req.body.password) {
+
+            var token = jwt.sign(req.body, app.get('secret'), {
+                expiresIn: '1h'
+            });
+
+            res.redirect('/table?token='+token);
+        } else {
+            res.redirect('/auth?fail');
+        }
+
+    });
+});
+
 
 app.get('/', function (req, res) {
     res.render('pages/index')
@@ -63,19 +113,11 @@ app.post('/', function (req, res) {
 
 });
 
-// app.get('/table', function(req, res){
-//   connection.query('SELECT * from hps', function(err, rows) {
-//     if(err) throw err;
-//
-//     console.log('The solution is: ', rows);
-//     res.send(rows);
-//   });
-// });
-
 
 app.get('/table', function (req, res) {
     connection.query('SELECT * from hps', function (err, rows) {
         if (err) throw err;
+        // TODO 예외처리
 
         var data = rows;
 

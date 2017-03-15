@@ -1,3 +1,14 @@
 <script>
 
+
+    // 성공시 / 전화번호 중복 시 / 에러 발생 시
+    var queryParam = decodeURIComponent(window.location.search.substring(1));
+    if (queryParam == 'fail') {
+        alert('관리자 비밀번호를 확인해주세요');
+        window.location.search = '';
+    } else if (queryParam == 'login-please') {
+        alert('로그인 해주세요');
+        window.location.search = '';
+    }
+
 </script>
