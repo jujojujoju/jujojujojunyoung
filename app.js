@@ -25,28 +25,41 @@ app.get('/', function (req, res) {
 
 app.post('/', function (req, res) {
 
-    //TODO : 전화번호 형식 거르기
+    var hp = req.body.hp_input_1 + '-' + req.body.hp_input_2 + '-' + req.body.hp_input_3;
 
     //TODO : 중복된 전화번호 거르기
 
-    // 등록시간
-    var date = new Date();
-    var formatDate = date.getFullYear() + ("0" + (date.getMonth() + 1)).slice(-2) + ("0" + date.getDate()).slice(-2) + ("0" + date.getHours() + 1 ).slice(-2) + ("0" + date.getMinutes()).slice(-2) + ("0" + date.getSeconds()).slice(-2);
-
-    // mysql 쿼리
-    connection.query('INSERT INTO hps (hp_1, hp_2, hp_3, hp_full, hp_regtime)' + ' VALUES (' + req.body.hp_input_1 + ',' + req.body.hp_input_2 + ',' + req.body.hp_input_3 + ',' + req.body.hp_input_1 + req.body.hp_input_2 + req.body.hp_input_3 + ',' + formatDate + ')', function (err, rows, fields) {
-        // 실패시
+    connection.query('SELECT * FROM hps WHERE hp = ' + hp, function (err, rows, fields) {
         if (err) {
-            // TODO 실패 알림 / index 페이지 리다이렉트
             console.log(err);
-            res.send('<script type="text/javascript">alert("데이터베이스 추가 중 에러가 발생했습니다.");</script>');
-            // res.sendFile();
+        } else if (rows.length != 0) {
+            res.send('<script type="text/javascript">alert("휴대폰 번호 중복.");</script>');
+        } else {
+            // 등록시간
+            var date = new Date();
+            var formatDate = date.getFullYear() + ("0" + (date.getMonth() + 1)).slice(-2) + ("0" + date.getDate()).slice(-2) + ("0" + date.getHours() + 1 ).slice(-2) + ("0" + date.getMinutes()).slice(-2) + ("0" + date.getSeconds()).slice(-2);
+
+            // mysql INSERT 쿼리
+            connection.query('INSERT INTO hps (hp, hp_regtime)' + ' VALUES (\'' + hp + '\',' + formatDate + ')',
+                function (err, rows, fields) {
+                    // 실패시
+                    if (err) {
+                        // TODO 실패 알림 / index 페이지 리다이렉트
+                        console.log(err);
+                        res.send('<script type="text/javascript">alert("데이터베이스 추가 중 에러가 발생했습니다.");</script>');
+                        // res.sendFile();
+                    }
+
+
+                    // TODO 성공시 성공 알림 / index 페이지 리다이렉트
+                    res.send('<script type="text/javascript">alert("성공적으로 응모 완료.");</script>');
+
+                    // res.sendFile('html/index.html', {root: __dirname});
+                });
         }
 
     });
 
-    // TODO 성공시 성공 알림 / index 페이지 리다이렉트
-    res.sendFile('html/index.html', {root: __dirname});
 });
 
 
