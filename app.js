@@ -19,6 +19,9 @@ var connection = mysql.createConnection({
     database: databaseConfig.db_name
 });
 
+app.get('/auth', function(req,res){
+    res.sendFile(__dirname + '/html/auth.html');
+});
 
 app.get('/', function (req, res) {
     res.sendFile('index.html');
