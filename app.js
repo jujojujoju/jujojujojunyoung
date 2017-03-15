@@ -2,13 +2,12 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 
-app.use(express.static(__dirname + '/html'));
-app.use(express.static(__dirname + '/css'));
-app.use(express.static(__dirname + '/js'));
-app.use(express.static(__dirname + '/images'));
+app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.urlencoded({extend: false}));
 app.use(bodyParser.json());
+
+app.set('view engine', 'ejs');
 
 var mysql = require('mysql');
 var databaseConfig = require('./config/database.json');
@@ -20,11 +19,11 @@ var connection = mysql.createConnection({
 });
 
 app.get('/auth', function(req,res){
-    res.sendFile(__dirname + '/html/auth.html');
+    res.render('pages/auth');
 });
 
-app.get('/', function (req, res) {
-    res.sendFile('index.html');
+app.get('/',function(req,res){
+    res.render('pages/index')
 });
 
 app.post('/', function (req, res) {
@@ -64,18 +63,18 @@ app.post('/', function (req, res) {
 
 });
 
-app.get('/table', function(req, res){    
-  connection.query('SELECT * from hps', function(err, rows) {
-    if(err) throw err;
-
-    console.log('The solution is: ', rows);
-    res.send(rows);
-  });
-});
+// app.get('/table', function(req, res){
+//   connection.query('SELECT * from hps', function(err, rows) {
+//     if(err) throw err;
+//
+//     console.log('The solution is: ', rows);
+//     res.send(rows);
+//   });
+// });
 
 
 app.get('/table', function (req, res) {
-    res.sendFile(__dirname + '/html/table.html');
+    res.render('pages/table');
 });
 
 

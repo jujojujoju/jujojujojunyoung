@@ -17,19 +17,18 @@
     <!-- Latest compiled and minified JavaScript -->
 
     <!-- index CSS file import -->
-    <link rel="stylesheet" type="text/css" href="global.css">
-    <link rel="stylesheet" type="text/css" href="auth.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <link rel="stylesheet" type="text/css" href="css/auth.css">
 
     <!-- javscript import -->
-    <script src="auth.js"></script>
-
+    <% include ../logics/auth %>
 
 </head>
 
 <body>
 
 <div id="auth_form">
-    <img src="logo.gif" alt="바른투자" height="42" width="120">
+    <img src="images/logo.gif" alt="바른투자" height="42" width="140">
     <div id="auth_title">관리자 인증</div>
     <form action="/auth" method="get">
         <input placeholder="비밀번호를 입력해주세요." type="password" class="form-control" id="auth_password" name="password">
