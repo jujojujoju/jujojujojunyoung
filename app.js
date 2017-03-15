@@ -39,7 +39,7 @@ app.post('/', function (req, res) {
         } else {
             // 등록시간
             var date = new Date();
-            var formatDate = date.getFullYear() + ("0" + (date.getMonth() + 1)).slice(-2) + ("0" + date.getDate()).slice(-2) + ("0" + date.getHours() + 1 ).slice(-2) + ("0" + date.getMinutes()).slice(-2) + ("0" + date.getSeconds()).slice(-2);
+            var formatDate = date.getFullYear() + ("0" + (date.getMonth() + 1)).slice(-2) + ("0" + date.getDate()).slice(-2) + ("0" + date.getHours()).slice(-2) + ("0" + date.getMinutes()).slice(-2) + ("0" + date.getSeconds()).slice(-2);
 
             // mysql INSERT 쿼리
             connection.query('INSERT INTO hps (hp, hp_regtime)' + ' VALUES (\'' + hp + '\',' + formatDate + ')',
