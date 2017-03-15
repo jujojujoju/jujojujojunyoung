@@ -61,6 +61,9 @@ app.post('/', function (req, res) {
 
 });
 
+app.get('/table', function (req, res) {
+    res.sendFile(__dirname + '/html/table.html');
+});
 
 app.listen(3000, function () {
 });
