@@ -18,11 +18,11 @@ var connection = mysql.createConnection({
     database: databaseConfig.db_name
 });
 
-app.get('/auth', function(req,res){
+app.get('/auth', function (req, res) {
     res.render('pages/auth');
 });
 
-app.get('/',function(req,res){
+app.get('/', function (req, res) {
     res.render('pages/index')
 });
 
@@ -74,7 +74,16 @@ app.post('/', function (req, res) {
 
 
 app.get('/table', function (req, res) {
-    res.render('pages/table');
+    connection.query('SELECT * from hps', function (err, rows) {
+        if (err) throw err;
+
+        var data = rows;
+
+        res.render('pages/table', {
+            data: data
+        });
+    });
+
 });
 
 
