@@ -3,8 +3,8 @@
     // 성공시 / 전화번호 중복 시 / 에러 발생 시
     var queryParam = decodeURIComponent(window.location.search.substring(1));
     if (queryParam == 'success') {
-        alert('성공적으로 등록하였습니다.');
-        window.location.search = '';
+        alert('신청해주셔서 감사합니다. 분석자료를 확인하여 빠른 시일내에 안내해 드리겠습니다.');
+        location.href = 'http://www.baruninvest.com/';
     } else if (queryParam == 'duplication') {
         alert('전화번호가 중복됩니다.');
         window.location.search = '';

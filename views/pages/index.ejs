@@ -34,34 +34,29 @@
 <body>
 <div id="index_background"></div>
 <div id="index_form">
-
-
-    <div id="loading">
-        <section class="wrapper">
-            <div class="spinner">
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-            </div>
-        </section>
-    </div>
-
-    <div id="loading_percent">0%</div>
-    <div id="loading_division" hidden="hidden">1/3</div>
-    <div class="loading_text" id="loading_text_1">종목 분석을 위한 데이터 수집중입니다...</div>
-    <div class="loading_text" id="loading_text_2" hidden="hidden">차트 분석 대기...</div>
-    <div class="loading_text" id="loading_text_3" hidden="hidden">차트 분석 중...</div>
-    <div class="loading_text" id="loading_text_4" hidden="hidden">차트 분석 완료!</div>
-    <div class="loading_text" id="loading_text_5" hidden="hidden">관련 이슈 분석 대기...</div>
-    <div class="loading_text" id="loading_text_6" hidden="hidden">관련 이슈 수집 중...</div>
-    <div class="loading_text" id="loading_text_7" hidden="hidden">관련 이슈 수집 완료!</div>
-    <div class="loading_text" id="loading_text_8" hidden="hidden">시장 상황 분석 대기...</div>
-    <div class="loading_text" id="loading_text_9" hidden="hidden">시장 상황 분석 완료!</div>
+    <div id="index_company">바른투자</div>
+    <div id="index_title">종목 자동분석기</div>
+    <form action="/analyze" method="get">
+        <div class="input-group">
+            <input name="search" type="text" class="form-control" placeholder="분석할 종목명을 입력하세요">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">Go!</button>
+            </span>
+        </div>
+    </form>
+    <div id="index_description">원하시는 종목명을 검색하시면<br> 자동으로 해당 종목의 분석을 시작합니다. (최대 약 3분소요)</div>
 </div>
+<div id="hp_footer">
+    <div class="hp_footer_text">회사명 : 바른투자</div>
+    <div class="hp_footer_text">대표자 : 최중재</div>
+    <div class="hp_footer_text">통신판매번호 : 제2016- 서울강서-1090호</div>
+    <div class="hp_footer_text">사업자번호 : 205-04-37380   [사업자정보확인]</div>
+    <div class="hp_footer_text">사업장주소 : 서울시 강서구 양천로 401, 강서한강자이타워</div>
+    <div class="hp_footer_text">대표전화 : 02-6341-5825, 팩스 : 02-2638-5859, 이메일 : baruninvest@gmail.com</div>
 
+    <div class="hp_footer_text">Copyrights. 바른투자.All Rights Reserved.</div>
+
+    <div class="hp_footer_text">귀하는 상기 동의를 거부할 권리가 있습니다. 단 동의 하지 않으실경우<br> 관련 상품이나 서비스 상담 신청은 불가능합니다.</div>
+</div>
 </body>
 </html>
