@@ -75,12 +75,16 @@ app.post('/auth', function (req, res) {
     });
 });
 
-
-app.get('/', function (req, res) {
-    res.render('pages/index')
+app.get('/', function(req,res){
+   res.render('pages/index')
 });
 
-app.post('/', function (req, res) {
+
+app.get('/hp', function (req, res) {
+    res.render('pages/hp')
+});
+
+app.post('/hp', function (req, res) {
 
     var hp = req.body.hp_input_1 + '-' + req.body.hp_input_2 + '-' + req.body.hp_input_3;
 

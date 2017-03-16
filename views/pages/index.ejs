@@ -1,10 +1,15 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>테스트</title>
+    <title>로딩</title>
+
 
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
+    <!--pake loader-->
+    <script src="js/fakeLoader.js"></script>
 
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
@@ -24,33 +29,37 @@
     <link rel="stylesheet" type="text/css" href="css/index.css">
 
     <!-- javscript import -->
-    <% include ../logics/index %>
+    <% include ../logics/index.ejs %>
 </head>
 <body>
+<div id="index_background">
 
-<div id="hp_form">
-
-    <div id="hp_form_title">휴대폰 번호 입력</div>
-
-    <div id="hp_inputs">
-        <form action="/" method="post">
-            <select class="form-control" id="hp_input_1" name="hp_input_1">
-                <option value="010">010</option>
-                <option value="011">011</option>
-                <option value="016">016</option>
-                <option value="017">017</option>
-                <option value="016">019</option>
-            </select>
-            <input type="text" minlength="4" maxlength="4" class="form-control" id="hp_input_2" name="hp_input_2">
-            <input type="text" minlength="4" maxlength="4" class="form-control" id="hp_input_3" name="hp_input_3">
-
-            <div id="hp_submit_btn_wrapper">
-                <button type="submit" class="btn btn-default" id="hp_submit_btn">확인</button>
-            </div>
-
-        </form>
-    </div>
 </div>
+
+<div id="loading">
+    <section class="wrapper">
+        <div class="spinner">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+        </div>
+    </section>
+</div>
+
+<div id="loading_percent">0%</div>
+<div class="loading_text" id="loading_text_1">종목 분석을 위한 데이터 수집중입니다...</div>
+<div class="loading_text" id="loading_text_2" hidden="hidden">차트 분석 대기...</div>
+<div class="loading_text" id="loading_text_3" hidden="hidden">차트 분석 중...</div>
+<div class="loading_text" id="loading_text_4" hidden="hidden"> id="loading_text_1"차트 분석 완료!</div>
+<div class="loading_text" id="loading_text_5" hidden="hidden">관련 이슈 분석 대기...</div>
+<div class="loading_text" id="loading_text_6" hidden="hidden">관련 이슈 수집 중...</div>
+<div class="loading_text" id="loading_text_7" hidden="hidden">관련 이슈 수집 완료!</div>
+<div class="loading_text" id="loading_text_8" hidden="hidden">시장 상황 분석 대기...</div>
+<div class="loading_text" id="loading_text_9" hidden="hidden">시장 상황 분석 완료!</div>
 
 
 </body>

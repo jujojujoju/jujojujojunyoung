@@ -14,12 +14,18 @@
     width: 210px;
     margin: 20px;
     bottom: 45px;
+    -webkit-border-radius: 6px 6px 0 0;
+    -moz-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
 }
 
 
 #auth_submit_btn{
     position:absolute;
     width: 210px;
-    bottom: 15px;
+    bottom: 32px;
     left:20px;
+    -webkit-border-radius: 0 0 6px 6px;
+    -moz-border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
 }

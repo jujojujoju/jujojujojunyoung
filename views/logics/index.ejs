@@ -1,36 +1,36 @@
 <script>
-
-    // 성공시 / 전화번호 중복 시 / 에러 발생 시
-    var queryParam = decodeURIComponent(window.location.search.substring(1));
-    if (queryParam == 'success') {
-        alert('성공적으로 등록하였습니다.');
-        window.location.search = '';
-    } else if (queryParam == 'duplication') {
-        alert('전화번호가 중복됩니다.');
-        window.location.search = '';
-    } else if (queryParam == 'fail') {
-        alert('데이터베이스 에러가 발생했습니다.');
-        window.location.search = '';
-    }
-
     $(document).ready(function () {
 
-        $('#hp_form').submit(function () {
+        function numberCounter(target_frame, target_number) {
 
-            // TODO 로딩아닌데 로딩인척하기
+            this.count = 0; this.diff = 0;
+            this.target_count = parseInt(target_number);
+            this.target_frame = document.getElementsByClassName(target_frame);
+            this.timer = null;
+            this.counter();
+        };
 
-            var isNum1 = /^\d+$/.test($('#hp_input_2').val());
-            var isNum2 = /^\d+$/.test($('#hp_input_3').val());
+        numberCounter.prototype.counter = function() {
+            var self = this;
+            this.diff = this.target_count - this.count;
 
-            if (!isNum1 || !isNum2) {
-                alert('전화번호 형식에 맞게 입력해 주세요!');
-                $('#hp_input_2').val('');
-                $('#hp_input_3').val('');
-                return false;
-            } else {
-                return true;
+            if(this.diff > 0) {
+                self.count += Math.ceil(this.diff / 5);
             }
-        });
-    });
 
+            this.target_frame.innerHTML = this.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+            $('#loading_text').val(this.target_frame.innerHTML + '%');
+
+            if(this.count < this.target_count) {
+                this.timer = setTimeout(function() { self.counter(); }, 20);
+            } else {
+                clearTimeout(this.timer);
+            }
+        };
+
+        new numberCounter("loading_percent", 100);
+
+
+    })
 </script>
