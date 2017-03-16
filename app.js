@@ -48,15 +48,13 @@ routes.use(function (req, res, next) {
 });
 
 app.post('/auth', function (req, res) {
-    console.log(req.body);
-
     var key = config.secret;
     var password = req.body.password;
 
     // 암호화
-    var cipher = crypto.createCipher('aes192', key);    // Cipher 객체 생성
-    cipher.update(password, 'utf8', 'base64');             // 인코딩 방식에 따라 암호화
-    var cipheredPassword = cipher.final('base64');        // 암호화된 결과 값
+    var cipher = crypto.createCipher('aes192', key);
+    cipher.update(password, 'utf8', 'base64');
+    var cipheredPassword = cipher.final('base64');
 
     connection.query('SELECT * from auth', function (err, rows) {
         if (err) throw err;
