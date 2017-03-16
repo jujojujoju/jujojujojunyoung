@@ -25,7 +25,6 @@ var connection = mysql.createConnection({
     database: databaseConfig.db_name
 });
 
-
 app.get('/auth', function (req, res) {
     res.render('pages/auth');
 });
@@ -50,14 +49,21 @@ routes.use(function (req, res, next) {
 
 app.post('/auth', function (req, res) {
     console.log(req.body);
-    //TODO 암호화
+
+    var key = config.secret;
+    var password = req.body.password;
+
+    // 암호화
+    var cipher = crypto.createCipher('aes192', key);    // Cipher 객체 생성
+    cipher.update(password, 'utf8', 'base64');             // 인코딩 방식에 따라 암호화
+    var cipheredPassword = cipher.final('base64');        // 암호화된 결과 값
 
     connection.query('SELECT * from auth', function (err, rows) {
         if (err) throw err;
         // TODO 예외처리
 
         // 패스워드 확인
-        if (rows[0].password == req.body.password) {
+        if (rows[0].password == cipheredPassword) {
 
             var token = jwt.sign(req.body, app.get('secret'), {
                 expiresIn: '1h'
