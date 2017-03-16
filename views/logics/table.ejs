@@ -32,6 +32,10 @@
             dateArray = [];
         }
 
+        for(var i in data)
+            {
+                data[i].id = ++i;
+            }
 
         $(function () {
             $('#table').bootstrapTable({

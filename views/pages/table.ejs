@@ -31,15 +31,18 @@
 </head>
 
 <body>
+
 <div style="padding: 10px; ">
     <table id="table"
            data-height="600"
            data-page-size="5"
            data-pagination-pre-text="이전"
-           data-pagination-next-text="다음">
+           data-pagination-next-text="다음"
+           data-sort-name="id"
+           data-sort-order="desc">
         <thead>
         <tr>
-            <th data-field="id" data-sortable="true">인덱스</th>
+            <th data-field="id" data-sortable="true" >인덱스</th>
             <th data-field="hp" data-sortable="true">핸드폰 번호</th>
             <th data-field="hp_regtime" data-sortable="true">등록 일자</th>
         </tr>
