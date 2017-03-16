@@ -8,6 +8,7 @@
 
     $(document).ready(function () {
 
+
         var data = JSON.parse('<%- JSON.stringify(data) %>');
 
         var dateArray = [];
@@ -51,7 +52,21 @@
         });
 
 
+        var stringData = 'index%2Chp%2Cregtime%0A';
+        for(var i in data){
+            stringData += data[i].id;
+            stringData += '%2C';
+            stringData += data[i].hp;
+            stringData += '%2C';
+            stringData += data[i].hp_regtime;
+            stringData += '%0A';
+        }
 
+
+        console.log(stringData)
+        $('#csv_download_btn')
+            .attr('href','data:text/csv;charset=utf8,' + stringData)
+            .attr('download','hp-data.csv');
 
     });
 

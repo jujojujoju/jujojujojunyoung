@@ -6,3 +6,10 @@
 #table_wrapper {
     margin: 20px;
 }
+
+#csv_download_btn {
+    position:absolute;
+    top: 99px;
+    left:30px;
+
+}
