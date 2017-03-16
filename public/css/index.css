@@ -30,6 +30,17 @@ body {
     font-size: 400%;
 }
 
+#loading_division{
+    width: 160px;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    margin-left: -80px;
+    color: white;
+    font-size: 400%;
+}
+
 .loading_text {
     width: 300px;
     height: auto;
