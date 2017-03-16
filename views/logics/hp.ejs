@@ -33,11 +33,14 @@
                 $('#hp_input_2').val('');
                 $('#hp_input_3').val('');
                 return false;
-            } else if(!isChecked1) {
+            } else if (!isChecked1) {
                 alert('서비스 이용약관에 동의해주세요.')
                 return false;
-            } else if(!isChecked2) {
+            } else if (!isChecked2) {
                 alert('추천 주식정보 문자 수신에 동의해 주세요.');
+                return false;
+            } else if ($('#hp_input_2').val().length != 4 || $('#hp_input_3').val().length != 4) {
+                alert('전화번호 길이를 확인해주세요');
                 return false;
             } else {
                 return true;
