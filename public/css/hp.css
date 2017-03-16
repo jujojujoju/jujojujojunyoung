@@ -1,41 +1,50 @@
+@media screen and (max-width: 480px) {
+}
+
+body {
+    background-color: black;
+}
+
+#label_check_1, #label_check_2 {
+    margin : 0 20px 10px 20px;
+    color: white;
+    float: left;
+}
+
 #hp_background {
-    z-index: -1;
-    position: absolute;
+    position: fixed;
+    opacity: 0.25;
     width: 100%;
-    height: 60%;
-    bottom: 0;
-    text-align: center;
-    background-image: url("/images/background.gif");
-    background-position: 50% 50%;
+    height: 100%;
+    background: url('/images/background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
 }
 
-#hp_background_top {
-    z-index: -1;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 40%;
-    background-color: #087264;
-}
-
 #hp_form {
+    position: fixed;
+    z-index: 999;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+    top: 30%;
     height: 400px;
     padding: 20px;
     text-align: center;
-    max-width: 600px;
+    /*max-width: 600px;*/
 }
 
 #hp_inputs {
+    max-width: 500px;
+    margin: 0px auto;
     margin-top: 20px;
 }
 
 #hp_form_title {
     color: white;
-    font-size: 200%;
+    font-size: 240%;
 }
 
 #hp_input_1, #hp_input_2, #hp_input_3 {
@@ -52,7 +61,23 @@
 
 #hp_submit_btn {
     width: 100%;
-    -webkit-border-radius:0;
-    -moz-border-radius:0;
-    border-radius:0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+#hp_footer {
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 150px;
+    background-color: black;
+    opacity: 0.5;
+}
+
+.hp_footer_text {
+    font-size: 8px;
+    color: white;
 }

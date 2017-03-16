@@ -93,10 +93,10 @@ app.post('/hp', function (req, res) {
         if (err) {
             console.log('ERROR :: database select query error');
             console.log(err);
-            res.redirect('/?fail');
+            res.redirect('/hp?fail');
         } else if (rows.length != 0) {
             console.log('FAIL :: hp (' + hp + ' ) is duplicated');
-            res.redirect('/?duplication');
+            res.redirect('/hp?duplication');
         } else {
             // 등록시간
             var date = new Date();
@@ -109,11 +109,11 @@ app.post('/hp', function (req, res) {
                     if (err) {
                         console.log('ERROR :: database insert query error');
                         console.log(err);
-                        res.redirect('/?fail');
+                        res.redirect('/hp?fail');
                     }
 
                     console.log('SUCCESS :: hp (' + hp + ' ) insert success');
-                    res.redirect('/?success');
+                    res.redirect('/hp?success');
                 });
         }
 

@@ -6,6 +6,20 @@ body {
     background-color: black;
 }
 
+
+#index_form {
+    width: 320px;
+    height: 600px;
+    position: fixed;
+    left : 50%;
+    margin-left: -160px;
+    top: 50%;
+    margin-top: -300px;
+    /*background-color: red;*/
+    z-index: 999;
+}
+
+
 #index_background {
     position: absolute;
     z-index: -1;
@@ -20,35 +34,29 @@ body {
 }
 
 #loading_percent {
-    width: 160px;
+    width: 100%;
     height: auto;
     position: absolute;
-    left: 50%;
-    top: 40%;
-    margin-left: -80px;
     color: white;
+    top: 280px;
     font-size: 400%;
 }
 
 #loading_division{
-    width: 160px;
+    width: 100%;
     height: auto;
     position: absolute;
-    left: 50%;
-    top: 40%;
-    margin-left: -80px;
     color: white;
+    top: 280px;
     font-size: 400%;
 }
 
 .loading_text {
-    width: 300px;
+    width: 100%;
     height: auto;
     position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-top: 20px;
-    margin-left: -150px;
+    top: 370px;
+    /*margin-left: -150px;*/
     color: white;
     font-size: 120%;
 }
