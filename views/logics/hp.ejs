@@ -22,10 +22,22 @@
             var isNum1 = /^\d+$/.test($('#hp_input_2').val());
             var isNum2 = /^\d+$/.test($('#hp_input_3').val());
 
+            var isChecked1 = $('#check_1').is(':checked');
+            var isChecked2 = $('#check_2').is(':checked');
+
+            console.log(isChecked1);
+            console.log(isChecked2);
+
             if (!isNum1 || !isNum2) {
                 alert('전화번호 형식에 맞게 입력해 주세요!');
                 $('#hp_input_2').val('');
                 $('#hp_input_3').val('');
+                return false;
+            } else if(!isChecked1) {
+                alert('서비스 이용약관에 동의해주세요.')
+                return false;
+            } else if(!isChecked2) {
+                alert('추천 주식정보 문자 수신에 동의해 주세요.');
                 return false;
             } else {
                 return true;
