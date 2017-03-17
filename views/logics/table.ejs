@@ -54,13 +54,11 @@
         function msieversion() {
             var ua = window.navigator.userAgent;
             var msie = ua.indexOf("MSIE ");
-            console.log("exploreasdr")
             if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) // If Internet Explorer, return true
             {
-                console.log("explorer");
                 return true;
             } else { // If another browser,
-                console.log("another");
+
                 return false;
             }
             return false;
@@ -90,9 +88,9 @@
                 growl.error("Invalid data");
                 return;
             }
-            console.log("expl")
+
             var fileName = "Result";
-            console.log("explorer")
+
             if(msieversion()){
                 var IEwindow = window.open();
                 IEwindow.document.write('sep=,\r\n' + CSV);
