@@ -8,7 +8,6 @@
 
     $(document).ready(function () {
 
-
         var data = JSON.parse('<%- JSON.stringify(data) %>');
 
         var dateArray = [];
@@ -51,21 +50,38 @@
             });
         });
 
+        $('#csv_download_btn').click(function () {
+//                var example = data;
+//                var x = new CSVExport(example);
+//                x.setAttribute('download', 'hp.csv');
+//                return false;
+//            var blob = new Blob(data);
+//            if (window.navigator.msSaveOrOpenBlob)  // IE hack; see http://msdn.microsoft.com/en-us/library/ie/hh779016.aspx
+//                window.navigator.msSaveBlob(blob, "filename.csv");
+//            else
+//            {
+//                var a = window.document.createElement("a");
+//                a.href = window.URL.createObjectURL(blob, {type: "text/plain"});
+//                a.download = "filename.csv";
+//                document.body.appendChild(a);
+//                a.click();  // IE: "Access is denied"; see: https://connect.microsoft.com/IE/feedback/details/797361/ie-10-treats-blob-url-as-cross-origin-and-denies-access
+//                document.body.removeChild(a);
+//            }
 
-        var stringData = 'index%2Chp%2Cregtime%0A';
-        for(var i in data){
-            stringData += data[i].id;
-            stringData += '%2C';
-            stringData += data[i].hp;
-            stringData += '%2C';
-            stringData += data[i].hp_regtime;
-            stringData += '%0A';
-        }
+            var csvData = new Blob(data, {type: 'text/csv;charset=utf-8;'});
+            var csvURL =  null;
+            if (navigator.msSaveBlob) {
+                csvURL = navigator.msSaveBlob(csvData, 'download.cv');
+            } else {
+                csvURL = window.URL.createObjectURL(csvData);
+            }
+            var tempLink = document.createElement('a');
+            tempLink.href = csvURL;
+            tempLink.setAttribute('download', 'download.cv');
+            tempLink.click();
 
 
-        $('#csv_download_btn')
-            .attr('href','data:text/csv;charset=utf8,' + stringData)
-            .attr('download','hp-data.csv');
+        });
 
     });
 
