@@ -79,11 +79,6 @@ app.get('/', function(req,res){
    res.render('pages/index')
 });
 
-app.get('/analyze', function(req,res){
-    res.render('pages/analyze')
-});
-
-
 app.get('/hp', function (req, res) {
     res.render('pages/hp')
 });
