@@ -7,3 +7,19 @@ body {
 .pagination-detail {
     display: none;
 }
+
+#footer {
+    padding: 12px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    background-color: black;
+    opacity: 0.5;
+}
+
+.footer_text {
+    font-size: 7px;
+    color: white;
+}
