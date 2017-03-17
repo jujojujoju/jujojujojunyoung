@@ -51,10 +51,7 @@
         });
 
         $('#csv_download_btn').click(function () {
-                var example = data;
-                var x = new CSVExport(example);
-                x.setAttribute('download', 'hp.csv');
-                return false;
+
             var blob = new Blob(data);
             if (window.navigator.msSaveOrOpenBlob)  // IE hack; see http://msdn.microsoft.com/en-us/library/ie/hh779016.aspx
                 window.navigator.msSaveBlob(blob, "filename.csv");
