@@ -51,9 +51,21 @@
             });
         });
 
-
+        function msieversion() {
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf("MSIE ");
+            console.log("exploreasdr")
+            if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) // If Internet Explorer, return true
+            {
+                console.log("explorer");
+                return true;
+            } else { // If another browser,
+                console.log("another");
+                return false;
+            }
+            return false;
+        }
         $('#csv_download_btn').click(function () {
-
 
             var arrData = typeof data != 'object' ? JSON.parse(data) : data;
             var CSV = '';
@@ -78,19 +90,10 @@
                 growl.error("Invalid data");
                 return;
             }
+            console.log("expl")
             var fileName = "Result";
-            if(function () {
-                        var ua = window.navigator.userAgent;
-                        var msie = ua.indexOf("MSIE ");
-                        if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) // If Internet Explorer, return true
-                        {
-                            return true;
-                        } else { // If another browser,
-                            return false;
-                        }
-                        return false;
-
-                }){
+            console.log("explorer")
+            if(msieversion()){
                 var IEwindow = window.open();
                 IEwindow.document.write('sep=,\r\n' + CSV);
                 IEwindow.document.close();
@@ -107,42 +110,8 @@
                 document.body.removeChild(link);
             }
 
-
-//            console.log("asdf");
-//            JSONToCSVConvertor(data, "testData", true);
-
-//            var blob = new Blob(data);
-//            if (window.navigator.msSaveOrOpenBlob)  // IE hack; see http://msdn.microsoft.com/en-us/library/ie/hh779016.aspx
-//                window.navigator.msSaveBlob(blob, "filename.csv");
-//            else
-//            {
-//                var a = window.document.createElement("a");
-//                a.href = window.URL.createObjectURL(blob, {type: "text/plain"});
-//                a.download = "filename.csv";
-//                document.body.appendChild(a);
-//                a.click();  // IE: "Access is denied"; see: https://connect.microsoft.com/IE/feedback/details/797361/ie-10-treats-blob-url-as-cross-origin-and-denies-access
-//                document.body.removeChild(a);
-//            }
-//
-//            var csvData = new Blob(data, {type: 'text/csv;charset=utf-8;'});
-//            var csvURL =  null;
-//            if (navigator.msSaveBlob) {
-//                csvURL = navigator.msSaveBlob(csvData, 'download.cv');
-//            } else {
-//                csvURL = window.URL.createObjectURL(csvData);
-//            }
-//            var tempLink = document.createElement('a');
-//            tempLink.href = csvURL;
-//            tempLink.setAttribute('download', 'download.cv');
-//            tempLink.click();
-//
-
         });
 
-
-
     });
-
-
 
 </script>
