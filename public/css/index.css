@@ -393,7 +393,7 @@ body {
 }
 
 /*모바일*/
-@media screen and (min-width: 321px) and (max-width: 440px) {
+@media screen and (min-width: 321px) and (max-width: 500px) {
 
     section.wrapper {
         padding: 40px 0;
@@ -497,7 +497,7 @@ body {
 }
 
 /*데스크탑*/
-@media screen and (min-width: 440px) {
+@media screen and (min-width: 500px) {
 
     section.wrapper {
         padding: 40px 0;
@@ -509,11 +509,11 @@ body {
     }
 
     #index_form {
-        width: 320px;
+        width: 400px;
         height: 400px;
         position: fixed;
         left: 50%;
-        margin-left: -160px;
+        margin-left: -200px;
         top: 10%;
         /*margin-top: -200px;*/
         /*background-color: red;*/
