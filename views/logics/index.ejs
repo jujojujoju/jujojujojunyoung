@@ -1,3 +1,14 @@
 <script>
-    
+    var queryString = decodeURIComponent(window.location.search.substring(1));
+    var company = queryString.split('=')[1];
+
+    $(document).ready(function () {
+        if(queryString == ''){
+            location.href='/?search=삼성전자';
+        } else {
+            $('#search').attr('placeholder', company);
+            $('#search').attr('value', company);
+        }
+    })
+
 </script>

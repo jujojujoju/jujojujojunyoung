@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,7 +39,7 @@
     <div id="index_title">종목 자동분석기</div>
     <form action="/analyze" method="get">
         <div class="input-group">
-            <input name="search" type="text" class="form-control" placeholder="분석할 종목명을 입력하세요">
+            <input name="search" type="text" class="form-control" id="search" placeholder="" value="" readonly="readonly">
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">Go!</button>
             </span>
